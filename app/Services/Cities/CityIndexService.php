@@ -3,6 +3,7 @@
 namespace App\Services\Cities;
 
 use App\Repositories\Contracts\CityRepository;
+use Illuminate\Support\Facades\Request;
 
 class CityIndexService {
 
@@ -15,7 +16,8 @@ class CityIndexService {
     public function index()
     {
         try {
-            $cities = $this->cityRepository->all();
+            $limit = Request::get("limit");
+            $cities = $this->cityRepository->paginate($limit);
 
             return response()->json($cities, 200);
         } catch (\Exception $e) {

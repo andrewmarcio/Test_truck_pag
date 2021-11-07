@@ -11,7 +11,7 @@ class GetCitiesByUf extends Command
      *
      * @var string
      */
-    protected $signature = 'cities:get {Uf}';
+    protected $signature = 'cities:get {UF}';
 
     /**
      * The console command description.
@@ -38,7 +38,7 @@ class GetCitiesByUf extends Command
     public function handle()
     {
         Command::info("Started request to get cities in IBGE API.");
-        $state = (new \App\Utils\FindStateByUfUtil($this->argument("Uf")))->getState();
+        $state = (new \App\Utils\FindStateByUfUtil($this->argument("UF")))->getState();
         $cities = (new \App\Utils\GetCitiesByStateIdUtil($state->id))->getCities();
         Command::info("Finished request IBGE API.");
         

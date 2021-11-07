@@ -15,6 +15,8 @@ class StoreCitiesUtil {
                     "name" => $city->nome
                 ]);
             });
+            
+            return true;
         } catch (\Throwable $th) {
             throw $th;
         }

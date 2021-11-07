@@ -20,6 +20,16 @@ class Address extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        "street_name",
+        "number",
+        "neighborhood",
+        "city_id"
+    ];
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, "city_id");
+    }
 
 }
